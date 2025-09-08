@@ -1,0 +1,66 @@
+React Code
+1. Handel the loading 
+    i) You can handel the api call loader by creating a loader state object like bellow.
+
+    const [isLoading,setIsLoading] = useState(false);
+
+    useEffect(()=>{
+        setIsLoading(true);
+
+        fetch(`http://..`)
+        .then((response)=>{
+            setIsLoading(false);
+            setUser(response.json())
+        })
+        .catch(error=>
+        {
+            setIsLoading(false)
+            ...
+        })
+    },[])
+
+    {
+        isLoading ? <p>Is Loading</p> 
+        : <div>...
+    }
+
+    ii) Also we can set the user object with in a single then. Don't need to write multiple then.
+
+
+2. Error handler 
+   i) You can handel the error by creating a new error state.
+   const [hasError,sethasError] = useState(false);
+
+    useEffect(()=>{
+        sethasError(false);
+
+        fetch(`http://..`)
+        .then((response)=>{...
+        })
+        .catch(error=>
+        {
+            ...
+            sethasError(true);
+        })
+    },[])
+
+    {
+        hasError ? <p>Unable to fetch the User details. Please try after sometime.</p> 
+    }
+   ii) We can show better error message for the end user. Like "Unable to fetch the User details. Please try after sometime.".
+
+3. Missed to add  userId dependency in the useEffect 
+    useEffect(()=>
+    ,[userId])
+
+4. Declare the User Type
+
+    type user = {
+        username:string,
+        bio:string
+    }
+
+5. Non happy path is not handeled
+
+    i) If the user id is not valid
+    ii) If the userid is undefined 

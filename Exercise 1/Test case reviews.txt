@@ -1,0 +1,13 @@
+Test Case review
+---------------
+
+1) Forget to mock the fetch api calling.
+    Every time we run the test case, it will call the actual api.
+2) Negative test cases are missing
+    i) If the api is Unable
+    ii) If the given User id is not valid
+    iii) If the User id is undefined
+    iv) 404 not found api
+3) Also valid response test is not done
+
+4) Async testing are missing.
