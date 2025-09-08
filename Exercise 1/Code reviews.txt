@@ -1,10 +1,11 @@
 React Code
-1. Use axios instate of fetch. Alos calling fetch directly from the component is not recomended. It is better to use the redux saga or redux thunk. from there you can the API.
-And alos avoid .then() use await. 
+1. Calling fetch directly from the component is not recommended. 
+It is better to use the redux saga or redux thunk from there you can call the API. 
+Avoid `.then`, use 'async...await'
 
 
-2. Missed to add  userId dependency in the useEffect, add it, otherwase data will not be refresh for every userId change.
- It will execute only once at the begning only.
+2. Add  ‘userId’ dependency in ‘useEffect’,  otherwise data will not be updated when ‘userId’ change.
+ It will execute only once at the beginning only.
 
     useEffect(()=>
     {
@@ -72,6 +73,6 @@ And alos avoid .then() use await.
 
 5. Handle the following non happy paths
 
-    i) If the userId is not valid
-    ii) If the userId is undefined
-    iii) If the api return the userId not found
+    i) If the ‘userId’ is not valid
+    ii) If the ‘userId’ is undefined
+    iii) If the api return the ‘userId’ not found
