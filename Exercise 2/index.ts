@@ -1,14 +1,18 @@
-export function flatternObject(data: any, parent?: string): any
+type Flattern = {
+    [key: string]: object | string | number | boolean;
+}
+
+export function flatternObject(data: object, parent?: string): Flattern
 {
-    let resultObject: any = {};
+    let resultObject: Flattern = {};
 
     Object.keys(data).forEach(key =>
     {
         const paramName: string = parent? parent+"."+key : key;
 
-        // Check if the value is an object, if yes then recursively call the function
-        if(typeof(data[key]) === 'object'){
-                const child: any = flatternObject(data[key],paramName);
+        // recursively calling the function with this value
+        if(typeof(data[key]) === 'object' && data[key] !== null){
+                const child: Flattern = flatternObject(data[key],paramName);
                 resultObject = {...resultObject, ...child};
             }
         else{

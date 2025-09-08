@@ -1,6 +1,20 @@
 React Code
-1. Handel the loading 
-    i) You can handel the api call loader by creating a loader state object like bellow.
+1. Use axios instate of fetch. Alos calling fetch directly from the component is not recomended. It is better to use the redux saga or redux thunk. from there you can the API.
+And alos avoid .then() use await. 
+
+
+2. Missed to add  userId dependency in the useEffect, add it, otherwase data will not be refresh for every userId change.
+ It will execute only once at the begning only.
+
+    useEffect(()=>
+    {
+
+    }
+    ,[userId])
+
+
+3. Handle the loading 
+    i) Handle the api call loader by creating a loader state object like bellow.
 
     const [isLoading,setIsLoading] = useState(false);
 
@@ -24,15 +38,15 @@ React Code
         : <div>...
     }
 
-    ii) Also we can set the user object with in a single then. Don't need to write multiple then.
+    ii) Also set the user object with in a single then. Don't need to write multiple then.
 
 
-2. Error handler 
-   i) You can handel the error by creating a new error state.
-   const [hasError,sethasError] = useState(false);
+3. Error handler 
+   i) Handel the error by creating a new error state.
+   const [hasError, setHasError] = useState(false);
 
     useEffect(()=>{
-        sethasError(false);
+        setHasError(false);
 
         fetch(`http://..`)
         .then((response)=>{...
@@ -40,18 +54,14 @@ React Code
         .catch(error=>
         {
             ...
-            sethasError(true);
+            setHasError(true);
         })
     },[])
 
     {
         hasError ? <p>Unable to fetch the User details. Please try after sometime.</p> 
     }
-   ii) We can show better error message for the end user. Like "Unable to fetch the User details. Please try after sometime.".
-
-3. Missed to add  userId dependency in the useEffect 
-    useEffect(()=>
-    ,[userId])
+   ii) Show better error message for the end user. Like "Unable to fetch the User details. Please try after sometime.".
 
 4. Declare the User Type
 
@@ -60,7 +70,8 @@ React Code
         bio:string
     }
 
-5. Non happy path is not handeled
+5. Handle the following non happy paths
 
-    i) If the user id is not valid
-    ii) If the userid is undefined 
+    i) If the userId is not valid
+    ii) If the userId is undefined
+    iii) If the api return the userId not found
