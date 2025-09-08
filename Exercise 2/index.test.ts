@@ -3,7 +3,7 @@ import { flatternObject } from ".";
 const { test, expect } = require('@jest/globals');
 
 test('flattern Object', () => {
-
+	
 	expect(flatternObject({
 		a:1,
 		b:{
