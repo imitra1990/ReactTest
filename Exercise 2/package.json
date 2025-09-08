@@ -1,0 +1,25 @@
+{
+  "name": "reacttest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imitra1990/ReactTest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imitra1990/ReactTest/issues"
+  },
+  "homepage": "https://github.com/imitra1990/ReactTest#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.1.3",
+    "ts-jest": "^29.4.1"
+  }
+}
